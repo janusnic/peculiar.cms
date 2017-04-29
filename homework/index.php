@@ -3,16 +3,9 @@
 /**
  * Homework
  *
- * Create a variable and echo it to the screen using PHP's in-built server.
+ * Create an array, loop through and echo it to the screen. Research array functions.
  *
- * The different ways you should echo variables to screen are as follows:
- * - with single quotes and concatenation
- * - within double quotes
- * - within double quotes and using concatenation
- * - within double quotes and encapsulating the variables
- * - using single quotes within double quotes
- * - using double quotes, within single quotes
- * - escaping double quotes, within a double quote surrounded string
- * - escaping single quotes, within a single quote surrounded string 
- **/
-
+ * - Create an array of any five animals, and then loop over them with foreach, and display each one within a list item.
+ * - Create an array within an array, and then loop over them with a foreach and display each nested array items within another list.
+ * - Research array functions that will give you information on the size of an array, if the value is unique, sorting functions etc.
+ */
