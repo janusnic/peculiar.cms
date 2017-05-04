@@ -1,2 +1,3 @@
 <?php
-require_once realpath(__DIR__.'/../').'/views/contact.php';
+$title = 'CONTACT PAGE';
+require_once VIEWS.'/contact.php';

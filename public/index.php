@@ -1,20 +1,14 @@
 <?php
 
-// if (function_exists('date_default_timezone_set'))
-// date_default_timezone_set('Europe/Kiev');
+if (function_exists('date_default_timezone_set'))
+date_default_timezone_set('Europe/Kiev');
 
-// // 1. Общие настройки
-// ini_set('display_errors',1);
-// error_reporting(E_ALL);
+// 1. Общие настройки
+ini_set('display_errors',1);
+error_reporting(E_ALL);
 
-// //Запускаем сессию
-// session_start();
+//Запускаем сессию
+session_start();
 
-// // Поключение файлов системы
-// require realpath(__DIR__.'/../').'/core/'.'route.php';
-
-
-
-$greeting = 'Hello, World';
-
-require 'index.view.php';
+// Поключение файлов системы
+require realpath(__DIR__.'/../').'/core/'.'bootstrap.php';
