@@ -15,7 +15,7 @@ include_once VIEWS.'/includes/header.php';
                     <li>
                         <h3><?php echo $singleItem['title']?></h3>
                         <p><?php echo $singleItem['formated_date'];?></p>
-                        <a href="/blog/<?php echo $singleItem['id']; ?>">Read More</a>
+                        <a href="/post/<?php echo $singleItem['id']; ?>">Read More</a>
                     </li>
 
                     <?php endforeach; ?>

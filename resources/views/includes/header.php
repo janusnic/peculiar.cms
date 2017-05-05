@@ -19,7 +19,7 @@
               <ul class="sub-menu">
               <li><a href="/about">About</a></li>
               <li><a href="/contact">Contact</a></li>
-              <li><a href="#">Link 4</a></li>
+              <li><a href="/posts">Blog</a></li>
               <li><a href="#">Link 5</a></li>
               <li><a href="#">Link 6</a></li>
               </ul>
