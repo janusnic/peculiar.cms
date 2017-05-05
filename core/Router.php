@@ -19,6 +19,11 @@ class Router
 	public function direct($uri)
 	{
 		if (array_key_exists($uri, $this->routes)) {
+
+			// include(CONTROLLERS.'/'.$this->routes[$uri].'.php');
+
+			// $controller = new $this->routes[$uri];
+			// return $controller;
 			return $this->routes[$uri];
 		}
 
