@@ -9,16 +9,22 @@ class PostsController
 		require MODELS.'/Post.php';
 
 		$posts = Post::index();
-		
-		include_once VIEWS.'/posts/index.php';
+
+		view('posts/index', ['title'=>'BLOG PAGE', 'posts'=>$posts]);
 	
 	}
 
 
 	public function view($vars)
 	{
+		require MODELS.'/Post.php';
+
 		extract($vars);
+
+		$post = Post::view($id);
+		
 		$title = 'BLOG POST '.$id;
-		include_once VIEWS.'/posts/show.php';
+		
+		view('posts/show', ['title'=>$title, 'post'=>$post]);
 	}
 }

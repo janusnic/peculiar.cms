@@ -12,10 +12,5 @@ class Request
         return $_SERVER['REQUEST_METHOD'];
     }
 
-    public static function params()
-    {
-        return $_SERVER['QUERY_STRING'];
-    }
-
     
 }

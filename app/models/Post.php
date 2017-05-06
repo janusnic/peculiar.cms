@@ -31,5 +31,23 @@ class Post {
 
     }
 
+    public static function view($id){
+        
+        $db = require ROOT.'/config/db.php';
+
+        $con = Connection::make($db['database']);
+        $con->exec("set names utf8");
+
+        $sql = "SELECT id, title, content, DATE_FORMAT(`create_at`, '%d.%m.%Y %H:%i:%s') AS formated_date, status FROM posts WHERE id = :id";
+
+        $res = $con->prepare($sql);
+        $res->bindParam(':id', $id, PDO::PARAM_INT);
+        $res->execute();
+
+        $post = $res->fetch(PDO::FETCH_ASSOC);
+
+        return $post;
+    }
+
     
  }
