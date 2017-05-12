@@ -2,7 +2,10 @@
 
 class Router
 {
-	protected $routes = [];
+	public $routes = [
+		'GET' => [],
+		'POST' => []
+	];
 
 	public static function load($file)
 	{
@@ -16,82 +19,54 @@ class Router
 		$this->routes = $routes;
 	}
 
+	
 	public function get($uri, $controller)
 	{
-		$this->routes[$uri] = $controller;
+		$this->routes['GET'][$uri] = $controller;
 	}
 
+	public function post($uri, $controller) {
+		$this->routes['POST'][$uri] = $controller;
+	}
 
-	// public function direct($uri)
-	// {   
-
-	// 	if (array_key_exists($uri, $this->routes)) {
-	// 		return $this->callAction(
-	// 		...explode('@', $this->routes[$uri])
-	// 		);
-	// 	}else{
-		
-	// 		foreach ($this->routes as $key => $val){
-	// 			$pattern = preg_replace('#\(/\)#', '/?', $key);
-	// 			$pattern = "@^" .preg_replace('/{([a-zA-Z0-9\_\-]+)}/', '(?<$1>[a-zA-Z0-9\_\-]+)', $pattern). "$@D";
-	// 			preg_match($pattern, $uri, $matches);
-	// 			array_shift($matches);
-	// 			if($matches){
-	// 				$getAction = explode('@', $val);
-	// 				return $this->callAction($getAction[0], $getAction[1], $matches);
-	// 			}
-	// 		}
-	// 	}
-	// 	throw new Exception('No route defined for this URI.');
-	// }
-
-
-
-	public function direct($uri)
+	public function direct($uri, $requestType)
 	{   
-		
-		if (array_key_exists($uri, $this->routes)) {		
 
+		if (array_key_exists($uri, $this->routes[$requestType])) {
 			return $this->callAction(
-				...explode('@', $this->routes[$uri])
+			...explode('@', $this->routes[$requestType][$uri])
 			);
+		}else{
+		
+			foreach ($this->routes[$requestType] as $key => $val){
+				$pattern = preg_replace('#\(/\)#', '/?', $key);
+				$pattern = "@^" .preg_replace('/{([a-zA-Z0-9\_\-]+)}/', '(?<$1>[a-zA-Z0-9\_\-]+)', $pattern). "$@D";
+				preg_match($pattern, $uri, $matches);
+				array_shift($matches);
+				if($matches){
+					$getAction = explode('@', $val);
+					return $this->callAction($getAction[0], $getAction[1], $matches);
+				}
+			}
 		}
-
-		Throw new Exception('No route defined for this URI.');
-
+		throw new Exception('No route defined for this URI.');
 	}
 
 
 
-	protected function callAction($controller, $action)
+	protected function callAction($controller, $action, $vars = []) // add $vars = [] in case $vars is empty
 	{
+		
 		include(CONTROLLERS.'/'.$controller.'.php');
+		
 		$controller = new $controller;
-
-	
-		if (!method_exists($controller, $action)) {
-			throw New Exception(
-				"{$controller} does not respond to the {$action} action"
+		
+		if (! method_exists($controller, $action)) {
+			throw new Exception(
+			"{$controller} does not respond to the {$action} action."
 			);
 		}
-
-		return $controller->$action();
+		return $controller->$action($vars); // return $vars to the action
 	}
-
-
-	// protected function callAction($controller, $action, $vars = []) // add $vars = [] in case $vars is empty
-	// {
-	// 	// $controller = "App\\Controllers\\{$controller}";
-	// 	include(CONTROLLERS.'/'.$controller.'.php');
-		
-	// 	$controller = new $controller;
-		
-	// 	if (! method_exists($controller, $action)) {
-	// 		throw new Exception(
-	// 		"{$controller} does not respond to the {$action} action."
-	// 		);
-	// 	}
-	// 	return $controller->$action($vars); // return $vars to the action
-	// }
 
 }

@@ -1,10 +1,10 @@
 <?php
 
-class IndexController
+class IndexController extends Controller
 {
 	public function index()
 	{	
-        view('home/index', ['title'=>'HOME PAGE']);
+        $this->_view->render('home/index', ['title'=>'SHOPAHOLIC HOME PAGE']);
 	}
 	
 }

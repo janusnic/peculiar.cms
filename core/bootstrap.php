@@ -1,9 +1,20 @@
 <?php
 require realpath(__DIR__.'/../').'/config/app.php';
-require ROOT.'/core/Connection.php';
 
-require ROOT.'/core/Request.php';
-require ROOT.'/core/Router.php';
+// подключаем файлы ядра
+function autoloadsystem($class) {
+    $filename = ROOT . "/core/" . $class . ".php";
+    if(file_exists($filename)){
+       require $filename;
+    }
+    $filename = ROOT . "/app/models/" . $class . ".php";
+    if(file_exists($filename)){
+       require $filename;
+    }
+ }
+
+spl_autoload_register("autoloadsystem");
+
 
 function view($file, $data = []) 
 {
@@ -14,10 +25,6 @@ function view($file, $data = [])
 
 
 $routesFile = ROOT.'/config/routes.php';
-
-// require Router::load($routesFile)
-//     ->direct(Request::uri());
-
 
 Router::load($routesFile)
     ->direct(Request::uri(), REQUEST::method());

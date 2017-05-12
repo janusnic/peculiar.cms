@@ -2,8 +2,12 @@
 
  class Connection
  {
- 	public static function make($config)
+ 	public static function make()
  	{
+ 		$db = include ROOT.'/config/db.php';
+
+ 		$config = $db['database'];
+
 		try {
 			return new PDO(
 				$config['connection'].';dbname='.$config['name'], 
