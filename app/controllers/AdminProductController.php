@@ -114,7 +114,7 @@ class AdminProductController extends Controller {
             $options['status'] = trim(strip_tags($_POST['status']));
 
             Product::editProduct($id, $options);
-            // Если запись добавлена
+            // Если запись существует
             if ($id) {
                 // Проверим, загружалось ли через форму изображение
                 if (is_uploaded_file($_FILES["image"]["tmp_name"])) {

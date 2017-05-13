@@ -5,6 +5,35 @@ $router->get('posts', 'PostsController@index');
 $router->get('post/{id}', 'PostsController@view');
 $router->get('admin', 'AdminProductController@index');
 
+$router->get('admin/posts', 'AdminPostController@index');
+$router->get('admin/posts/add', 'AdminPostController@add');
+$router->get('admin/posts/edit/{id}', 'AdminPostController@edit');
+$router->get('admin/posts/delete/{id}', 'AdminPostController@delete');
+
+$router->post('admin/posts/add', 'AdminPostController@add');
+$router->post('admin/posts/edit/{id}', 'AdminPostController@edit');
+$router->post('admin/posts/delete/{id}', 'AdminPostController@delete');
+
+$router->get('admin/roles', 'AdminRoleController@index');
+$router->get('admin/roles/add', 'AdminRoleController@add');
+$router->get('admin/roles/edit/{id}', 'AdminRoleController@edit');
+$router->get('admin/roles/delete/{id}', 'AdminRoleController@delete');
+
+$router->post('admin/roles/add', 'AdminRoleController@add');
+$router->post('admin/roles/edit/{id}', 'AdminRoleController@edit');
+$router->post('admin/roles/delete/{id}', 'AdminRoleController@delete');
+
+$router->get('admin/users', 'AdminUserController@index');
+$router->get('admin/users/add', 'AdminUserController@add');
+$router->post('admin/users/add', 'AdminUserController@add');
+
+$router->get('admin/users/edit/{id}', 'AdminUserController@edit');
+$router->post('admin/users/edit/{id}', 'AdminUserController@edit');
+
+$router->get('admin/users/delete/{id}', 'AdminUserController@delete');
+$router->post('admin/users/delete/{id}', 'AdminUserController@delete');
+
+
 $router->get('admin/products', 'AdminProductController@list');
 
 $router->get('admin/products/add', 'AdminProductController@add');

@@ -1,30 +1,25 @@
 <?php
 
-class PostsController
+class PostsController extends Controller
 {
 	public function index()
 	{		
 
-		$title = 'BLOG PAGE';	
-		require MODELS.'/Post.php';
-
 		$posts = Post::index();
-
-		view('posts/index', ['title'=>'BLOG PAGE', 'posts'=>$posts]);
+		$data['posts'] = $posts;
+        $data['title'] = 'Post Page ';
+        $this->_view->render('posts/index',$data);
 	
 	}
 
 
 	public function view($vars)
 	{
-		require MODELS.'/Post.php';
-
 		extract($vars);
-
 		$post = Post::view($id);
-		
-		$title = 'BLOG POST '.$id;
-		
-		view('posts/show', ['title'=>$title, 'post'=>$post]);
+		$data['post'] = $post;
+        $data['title'] = 'Post Page ';
+       
+        $this->_view->render('posts/show',$data);
 	}
 }

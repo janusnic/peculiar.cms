@@ -31,6 +31,15 @@
 			<a data-title='Orders' href='/admin/orders'>Orders</a>
 		  </li>
 		  <li>
+			<a data-title='Управление публикациями' href="/admin/posts">Posts</a>
+		  </li>
+		  <li>
+			<a data-title='Управление пользователями' href="/admin/users">Users</a>
+		  </li>
+		  <li>
+			<a data-title='Управление roles' href="/admin/roles">Roles</a>
+		  </li>
+		  <li>
 			<a data-title='Settings'>Settings</a>
 		  </li>
 		  <li>
