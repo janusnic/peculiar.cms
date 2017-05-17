@@ -7,8 +7,5 @@ date_default_timezone_set('Europe/Kiev');
 ini_set('display_errors',1);
 error_reporting(E_ALL);
 
-//Запускаем сессию
-session_start();
-
 // Поключение файлов системы
 require realpath(__DIR__.'/../').'/core/'.'bootstrap.php';

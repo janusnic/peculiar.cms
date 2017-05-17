@@ -34,6 +34,21 @@ $router->get('admin/users/delete/{id}', 'AdminUserController@delete');
 $router->post('admin/users/delete/{id}', 'AdminUserController@delete');
 
 
+$router->get('register', 'UserController@signup');
+$router->post('register', 'UserController@signup');
+
+$router->get('login', 'UserController@login');
+$router->post('login', 'UserController@login');
+
+$router->get('profile', 'ProfileController@index');
+
+$router->get('profile/edit', 'ProfileController@edit');
+$router->post('profile/edit', 'ProfileController@edit');
+
+$router->get('logout', 'UserController@logout');
+$router->post('logout', 'UserController@logout');
+
+
 $router->get('admin/products', 'AdminProductController@list');
 
 $router->get('admin/products/add', 'AdminProductController@add');

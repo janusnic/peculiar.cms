@@ -15,16 +15,11 @@ function autoloadsystem($class) {
 
 spl_autoload_register("autoloadsystem");
 
-
-function view($file, $data = []) 
-{
-    extract($data);
-    
-    return require VIEWS."/{$file}.php";
-}
+$app = new App();
+$app->init();
 
 
-$routesFile = ROOT.'/config/routes.php';
+// $routesFile = ROOT.'/config/routes.php';
 
-Router::load($routesFile)
-    ->direct(Request::uri(), REQUEST::method());
+// Router::load($routesFile)
+//     ->direct(Request::uri(), REQUEST::method());

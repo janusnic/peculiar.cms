@@ -6,3 +6,5 @@ define('CONTROLLERS', realpath(__DIR__.'/../app/controllers/'));
 define('MODELS', realpath(__DIR__.'/../app/models/'));
 define('APPNAME', 'SHOPAHOLIC');
 define('SLOGAN', 'Short Description');
+// set prefix for sessions
+define('SESSION_PREFIX','shop_');
