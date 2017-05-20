@@ -2,6 +2,8 @@
 include_once VIEWS.'/includes/head.php';
 include_once VIEWS.'/includes/header.php';
 ?>
+
+        <main>
             <?php if($data['res']):?>
                 <h4 id="edit_thanks">Данные успешно изменены!</h4>
                 <h3 id="to_cabinet">Вернуться в <a href="/profile" id="reg_main_a">Кабинет</a></h3>
@@ -14,8 +16,6 @@ include_once VIEWS.'/includes/header.php';
                     <?php endforeach;?>
                 </ul>
             <?php endif;?>
-
-        <main>
 
         <h1><?= $title;?></h1>
 

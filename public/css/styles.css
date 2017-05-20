@@ -1235,3 +1235,72 @@ dropdown ul li:nth-child(3):hover .fa {
   -ms-backface-visibility: hidden;
   /* Internet Explorer */
 }
+
+.wrapper {
+  margin: 80 auto;
+  width: 90%;
+}
+
+.cards {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.cards li {
+  border: 2px solid #490A3D;
+  border-radius:5px;
+  background-color: #123;
+  color: #fff;
+  flex: 1 1 300px;
+}
+
+.cards h2 {
+  background-color: #aa0000;
+  margin: 0;
+  padding: 10px;
+}
+
+.cards p {
+  padding: 10px;
+}
+
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -10px;
+}
+
+.flex li {
+  flex: 1 1 200px;
+  margin: 10px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  /*grid-template-columns: repeat(auto-fill, minmax(200px 1fr));*/
+  grid-gap: 20px;
+}
+
+.add {
+   background: #fff;
+   display: block;
+   margin:0 auto;
+   color: #a00;
+   font-size: 1.5em;
+   width: 1.5em;
+   height: 1.5em;
+   
+   border-radius: 100%;
+ }
+
+ .add span{
+  vertical-align:middle;
+ }
+
+ .add:hover {
+   background: #a00;
+   color: #fc0;
+  
+ }

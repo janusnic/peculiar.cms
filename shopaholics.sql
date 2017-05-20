@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 13, 2017 at 06:11 PM
+-- Generation Time: May 20, 2017 at 10:34 PM
 -- Server version: 5.5.55-0ubuntu0.14.04.1
--- PHP Version: 7.1.4-1+deb.sury.org~trusty+1
+-- PHP Version: 7.1.5-1+deb.sury.org~trusty+1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -42,6 +42,31 @@ INSERT INTO `category` (`id`, `name`, `status`) VALUES
 (3, 'Телефоны', 1),
 (4, 'Наушники', 1),
 (5, 'Чехлы', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `orders`
+--
+
+CREATE TABLE `orders` (
+  `id` int(11) NOT NULL,
+  `user_name` varchar(255) NOT NULL,
+  `user_phone` varchar(255) NOT NULL,
+  `user_comment` text,
+  `user_id` int(11) DEFAULT NULL,
+  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `products` text NOT NULL,
+  `status` int(11) NOT NULL DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`id`, `user_name`, `user_phone`, `user_comment`, `user_id`, `date`, `products`, `status`) VALUES
+(3, 'userName', 'userPhone', 'userText', 2, '2017-05-20 15:21:11', '\"[{\\\"id\\\":\\\"3\\\",\\\"quantity\\\":\\\"3\\\"}]\"', 1),
+(11, 'jan', 'userPhone', 'userText', 1, '2017-05-20 20:50:33', '\"[{\\\"id\\\":\\\"4\\\",\\\"quantity\\\":\\\"1\\\"}]\"', 1);
 
 -- --------------------------------------------------------
 
@@ -91,8 +116,10 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`id`, `name`, `category_id`, `code`, `price`, `availability`, `brand`, `description`, `is_new`, `is_recommended`, `status`) VALUES
-(2, 'test', 1, 1234567, 123, 1, 'test', 'Test product', 1, 0, 1),
-(3, 'product', 1, 1234567, 1111, 1, 'Test', 'product 1', 1, 0, 1);
+(3, 'product', 1, 1234567, 1111, 1, 'Test', 'product 1', 1, 0, 1),
+(4, 'Product2', 2, 2345678, 234, 1, 'test', 'Test product2', 1, 0, 1),
+(5, 'Product22', 1, 1234456, 444, 1, 'test', 'test product22', 1, 0, 1),
+(6, 'Product4', 1, 2345, 555, 1, 'test', 'Product 4', 1, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -133,7 +160,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `role_id`, `status`) VALUES
-(1, 'janus', 'janus@uk.ua', '$2y$10$zSAevU2SHCvCSjCTG6tOw.7v8Qua40f48gWU1jhAssM8WNfkMdok6', 1, 1);
+(1, 'janus', 'janus@uk.ua', '$2y$10$zSAevU2SHCvCSjCTG6tOw.7v8Qua40f48gWU1jhAssM8WNfkMdok6', 1, 1),
+(2, 'Jan', 'jan@my.com', '$2y$10$b.MlgdIuBxYKFdVbzRVVsOkSghpWahZ5g5.MmzMXK3F19A9EtXLBm', 0, 1);
 
 --
 -- Indexes for dumped tables
@@ -143,6 +171,12 @@ INSERT INTO `users` (`id`, `name`, `email`, `password`, `role_id`, `status`) VAL
 -- Indexes for table `category`
 --
 ALTER TABLE `category`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `orders`
+--
+ALTER TABLE `orders`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -179,6 +213,11 @@ ALTER TABLE `users`
 ALTER TABLE `category`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
+-- AUTO_INCREMENT for table `orders`
+--
+ALTER TABLE `orders`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+--
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
@@ -187,7 +226,7 @@ ALTER TABLE `posts`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `roles`
 --
@@ -197,7 +236,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

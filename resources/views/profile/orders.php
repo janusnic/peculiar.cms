@@ -1,7 +1,10 @@
-<section>
-    <div>
-
-        <h4>Ваши заказы</h4>
+<?php
+include_once VIEWS.'/includes/head.php';
+include_once VIEWS.'/includes/header.php';
+?>
+    
+ <main>
+        <h1><?= $title;?></h1>
         <table>
             <tr>
                 <th>Номер заказа</th>
@@ -11,11 +14,13 @@
             </tr>
             <?php foreach ($data['orders'] as $order) :
                 //Вытягиваем JSON строку заказанных товаров и преобразуем в массив
-                $productQuantity = json_decode($order['products'], true);
+                $productQuantity = json_decode(json_decode($order['products'], true));
+                
                 //Выбираем ключи (id товаров)
                 $productIds = array_keys($productQuantity);
 
                 $products = Product::getProductsByIds($productIds);
+                $totalValue = 0;
                 ?>
 
                 <tr>
@@ -42,7 +47,7 @@
                     <td><?php echo Order::getStatusText($order['status']); ?></td>
                 </tr>
                 <tr class="total_price">
-                    <td colspan="4"><?php echo '<span>Сумма заказа: ' . $totalValue; echo' грн</span>';?></td>
+                    <td colspan="4"><?php echo '<span>Сумма заказа: ' . $totalValue.' грн</span>';?></td>
                 </tr>
                 <?php
                     //Очищаем массив
@@ -50,5 +55,8 @@
                 ?>
             <?php endforeach; ?>
         </table>
-    </div>
-</section>
+
+ </main>
+<?php
+
+include_once VIEWS.'/includes/footer.php';

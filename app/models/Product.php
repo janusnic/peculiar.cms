@@ -20,7 +20,7 @@ class Product {
         $con->exec("set names utf8");
 
         $sql = "
-                SELECT id, name, code, price FROM product
+                SELECT id, name, code, price, description FROM product
                 ORDER BY id ASC
                 ";
 

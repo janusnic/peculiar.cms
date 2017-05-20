@@ -80,5 +80,23 @@
 
          }
 
+          /**
+          * Просмотр истории заказов пользователя
+          *
+          * @return bool
+          */
+         public function ordersList (){
+
+             //Получаем id пользователя из сессии
+             $userId = User::checkLog();
+
+             $orders = Order::getOrdersListByUserId($userId);
+
+             $data['title'] = 'Личный кабинет Ваши заказы ';
+             $data['orders'] = $orders;
+
+             $this->_view->render('profile/orders',$data);
+
+         }
 
      }

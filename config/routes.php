@@ -5,10 +5,19 @@ $router->get('posts', 'PostsController@index');
 $router->get('post/{id}', 'PostsController@view');
 $router->get('admin', 'AdminProductController@index');
 
+$router->get('catalog', 'CatalogController@index');
+
 $router->get('admin/posts', 'AdminPostController@index');
 $router->get('admin/posts/add', 'AdminPostController@add');
 $router->get('admin/posts/edit/{id}', 'AdminPostController@edit');
 $router->get('admin/posts/delete/{id}', 'AdminPostController@delete');
+
+$router->get('admin/orders', 'AdminOrderController@index');
+$router->get('admin/orders/view/{id}', 'AdminOrderController@view');
+$router->get('admin/orders/edit/{id}', 'AdminOrderController@edit');
+$router->get('admin/orders/delete/{id}', 'AdminOrderController@delete');
+$router->post('admin/orders/edit/{id}', 'AdminOrderController@edit');
+$router->post('admin/orders/delete/{id}', 'AdminOrderController@delete');
 
 $router->post('admin/posts/add', 'AdminPostController@add');
 $router->post('admin/posts/edit/{id}', 'AdminPostController@edit');
@@ -44,6 +53,9 @@ $router->get('profile', 'ProfileController@index');
 
 $router->get('profile/edit', 'ProfileController@edit');
 $router->post('profile/edit', 'ProfileController@edit');
+
+$router->get('profile/orders', 'ProfileController@ordersList');
+$router->post('profile/orders', 'ProfileController@ordersList');
 
 $router->get('logout', 'UserController@logout');
 $router->post('logout', 'UserController@logout');
