@@ -1,6 +1,25 @@
-    <div id="footer">
+
+    <footer class="footer">
+
+    <div class="footer__inner">
+
+    <div class="footer__bottom">
+      
+      <div class="footer__bottom-left">
         <p id='copy'>&copy; Shopaholic 2017<p>
+        <p>all rights reserved</p>
+      </div>
+
+      <div class="footer__bottom-center">
+            <p>401 Ukraine Komarova Avenue Kyiv, UA 002 </p>
+
+            <p>crew@my.com    044 243-1107</p>
+      </div>
+
+      </div>
     </div>
+      
+    </footer>
     <script src="/js/jquery.min.js"></script>
 
     <script>
@@ -144,25 +163,30 @@ function toggle_panel_visibility(panel, body) {
             var $item = $(item);
             var its = new Object();
             its.id = $item.data('id'),
-            console.log(its.id);
+            
             its.quantity = $item.find('.qty').val();
-            console.log(its.quantity);
+            
             data.push(its);
-            console.log(data);
+            
         });
 
-        var values = JSON.stringify(data);
-
-        console.log(values); //
-
+        //var values = JSON.stringify(data);
+        
+        var info = $('.pay').children();
+        var its = new Object();
+        its.name = $(info).find('#name').val();
+        its.tel = $(info).find('#tel').val();
+        its.comment = $(info).find('#comment').val();
+        
         $.ajax({
              type: 'POST',
-             url: 'cart/index',
+             url: 'cart',
               dataType: 'json',
-              data: 'val=' + values,
+              data: { 'val': JSON.stringify(data),
+                      'info': JSON.stringify(its)},
              success: function(data){
-                console.log(data);
-                $(location).attr('href', 'cart/index')
+                
+                $(location).attr('href', 'catalog')
              }
         });
 

@@ -3,8 +3,14 @@
 $router->get('', 'IndexController@index');
 $router->get('posts', 'PostsController@index');
 $router->get('post/{id}', 'PostsController@view');
+$router->post('search', 'PostsController@search');
 $router->get('admin', 'AdminProductController@index');
 
+//оформление заказа
+$router->post('cart', 'CartController@index');
+$router->post('check', 'UserController@actionCheck');
+
+$router->get('catalog/page-{page}', 'CatalogController@index');
 $router->get('catalog', 'CatalogController@index');
 
 $router->get('admin/posts', 'AdminPostController@index');

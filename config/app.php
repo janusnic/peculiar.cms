@@ -8,3 +8,4 @@ define('APPNAME', 'SHOPAHOLIC');
 define('SLOGAN', 'Short Description');
 // set prefix for sessions
 define('SESSION_PREFIX','shop_');
+define('DOMAIN', 'http://peculiar.cms/');

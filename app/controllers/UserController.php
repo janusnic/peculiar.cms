@@ -67,7 +67,7 @@
 
             $response = array(
                     'r' => 'fail',
-                    'url' => 'user/login'
+                    'url' => 'login'
                 );
             } else {
                 $response = array(

@@ -6,7 +6,7 @@
 class Product {
 
     //Количество отображаемых товаров по умолчанию
-    const SHOW_BY_DEFAULT = 6;
+    const SHOW_BY_DEFAULT = 4;
 
     /**
      * Выводит списко всех товраов
@@ -240,5 +240,27 @@ class Product {
         $res->bindParam(':id', $id, PDO::PARAM_INT);
         return $res->execute();
     }
+
+        /**
+     * Общее кол-во товаров в магазине
+     *
+     * @return mixed
+     */
+    public static function getTotalProducts () {
+
+        // Соединение с БД
+        $db = Connection::make();
+
+        // Текст запроса к БД
+        $sql = "SELECT count(id) AS count FROM product WHERE status=1 ";
+
+        // Выполнение коменды
+        $res = $db->query($sql);
+
+        // Возвращаем значение count - количество
+        $row = $res->fetch();
+        return $row['count'];
+    }
+
 
 }

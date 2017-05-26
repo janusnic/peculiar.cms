@@ -23,10 +23,10 @@
           </h1>
         </div>
         <p>
-          <input required type="text" class="checkout-input" placeholder="Your name"  name="name">
-          <input required type="tel" name="tel" pattern="0([0-9]{2})([0-9]{7})" placeholder="Телефон в формате: 0(xx)-xxx-xx-xx" class="checkout-input">
+          <input required type="text" class="checkout-input" placeholder="Your name"  id="name">
+          <input required type="tel" id="tel" pattern="0([0-9]{2})([0-9]{7})" placeholder="Телефон в формате: 0(xx)-xxx-xx-xx" class="checkout-input">
 
-          <textarea name="comment" placeholder="Комментарий к заказу" class="checkout-input"></textarea>
+          <textarea id="comment" placeholder="Комментарий к заказу" class="checkout-input"></textarea>
 
         </p>
 
@@ -37,10 +37,6 @@
 
     </div>
 </div> <!-- cart -->
-
-<div id="footer">
-    <p id='copy'>&copy; Shopaholic 2017<p>
-</div>
 
 <script id='cartItem' type='text/template'>
   <li class="cart-product">

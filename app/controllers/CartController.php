@@ -10,7 +10,7 @@ class CartController extends Controller{
                  parent::__construct();
    }
 
-    public function actionIndex (){
+    public function index (){
 
         //Получаем id пользователя из сессии
         $userId = User::checkLog();
@@ -19,8 +19,15 @@ class CartController extends Controller{
         $user = User::getUserById($userId);
 
         $productsInCart = $_POST['val'];
+        
+        $info = json_decode($_POST['info'], true);
 
-        $res = Order::save($user['name'], 'userPhone', 'userText', $userId, $productsInCart);
+         $userPhone = $info['tel'];
+         $userName = $info['name'];
+         $userText = $info['comment'];
+        // 
+
+        $res = Order::save($userName, $userPhone, $userText, $userId, $productsInCart);
 
     }
 

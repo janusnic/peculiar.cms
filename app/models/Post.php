@@ -107,8 +107,6 @@ class Post {
 
 
     public static function view($id){
-        
-        //$db = require ROOT.'/config/db.php';
 
         $con = Connection::make();
         $con->exec("set names utf8");
@@ -134,4 +132,21 @@ class Post {
                 break;
         }
     }
+
+    public static function searchPost ($query) {
+
+        $db = Connection::make();
+        $db->exec("set names utf8");
+
+        $sql = "SELECT id, title, DATE_FORMAT(`create_at`, '%d.%m.%Y %H:%i:%s') AS formated_date FROM posts WHERE status = 1 and ((title LIKE '%{$query}%') OR (content LIKE '%{$query}%'))";
+
+        $res = $db->prepare($sql);
+        
+        $res->execute();
+
+        $posts = $res->fetchAll(PDO::FETCH_ASSOC);
+
+        return $posts;
+    }
+
  }

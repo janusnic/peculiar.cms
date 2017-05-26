@@ -10,30 +10,40 @@ class CatalogController extends Controller {
         parent::__construct();
     }
 
-
     /**
      * Отображает список всех товаров, отсортирован по дате добавления
      *
      * @param int $page текущая страница
      * @return bool
      */
-    public function index () {
+    
+    public function index ($vars) {
 
+        $page = 1;
+        
+        extract($vars);
+        
+        $page = $page? $page:1;
+        
         //Вывод категорий
         $categories = Category::index();
 
-        $products = Product::index();
+        $latestProducts = Product::getLatestProducts($page);
 
         //Общее кол-во товаров (для пагинации)
-        //$total = Product::getTotalProducts();
+        $total = Product::getTotalProducts();
+
+        $pagination = new Pagination($total, $page, Product::SHOW_BY_DEFAULT, 'page-');
+
 
         $data['title'] = 'Welcome To Catalog ';
         //Последние продукты
-        $data['products'] = $products;
+        $data['products'] = $latestProducts;
         $data['categories'] = $categories;
-        
+        $data['pagination'] = $pagination;
+    
         $this->_view->render('catalog/index',$data);
-        
+    
     }
 
 }

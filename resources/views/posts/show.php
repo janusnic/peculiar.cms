@@ -2,10 +2,21 @@
 include_once VIEWS.'/includes/head.php';
 include_once VIEWS.'/includes/header.php';
 ?>
-        <main>
+        <div class="page-content">
+        <div class="wrapper">
+            <div class="breadcrumb"><?= $breadcrumb;?></div>
 
-            <h1><?= $title;?></h1>
-            <h2><?= $post['title'];?></h2>
+            
+              
+              <div class="content-wrap__main-content">
+              <div class="wrapper--white wrapper--footer-bottom">
+
+
+              <div class="one-col">
+              <div class="rich-text">
+
+        
+              <h1 class="heading-a u-align-center"><?= $post['title'];?></h1>
             <p>
                 Create At: <?= $post['formated_date'];?>
             </p>
@@ -14,8 +25,12 @@ include_once VIEWS.'/includes/header.php';
                 <?= $post['content'];?>
             </div>
 
-            
-        </main>
+            </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
        
 
 <?php
