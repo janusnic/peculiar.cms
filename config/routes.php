@@ -5,6 +5,10 @@ $router->get('posts', 'PostsController@index');
 $router->get('post/{id}', 'PostsController@view');
 $router->post('search', 'PostsController@search');
 $router->get('admin', 'AdminProductController@index');
+$router->get('comment', 'CommentController@index');
+$router->post('comment', 'CommentController@index');
+$router->get('contact', 'ContactController@index');
+$router->post('contact', 'ContactController@index');
 
 //оформление заказа
 $router->post('cart', 'CartController@index');

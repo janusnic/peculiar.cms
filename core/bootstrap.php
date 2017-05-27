@@ -17,9 +17,3 @@ spl_autoload_register("autoloadsystem");
 
 $app = new App();
 $app->init();
-
-
-// $routesFile = ROOT.'/config/routes.php';
-
-// Router::load($routesFile)
-//     ->direct(Request::uri(), REQUEST::method());

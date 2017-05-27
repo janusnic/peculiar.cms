@@ -23,6 +23,9 @@
     <script src="/js/jquery.min.js"></script>
 
     <script>
+
+ 
+
 $(document).ready(function () {
 
 var $cart = $('.cart-items');    
@@ -170,7 +173,6 @@ function toggle_panel_visibility(panel, body) {
             
         });
 
-        //var values = JSON.stringify(data);
         
         var info = $('.pay').children();
         var its = new Object();
@@ -192,6 +194,43 @@ function toggle_panel_visibility(panel, body) {
 
     });
 
+
+    $('#addCommentForm').on('submit', function(e) {
+      e.preventDefault();
+
+      /* Get from elements values */
+         var values = $(this).serialize();
+
+         $.ajax({
+                url: "/comment",
+                type: "post",
+                data: values ,
+                success: function (response) {
+                   // you will get response from your php page (what you echo or print)
+                   console.log(response);         
+                 
+                   var msg = JSON.parse(response);
+
+                      if(msg.status){
+                          console.log('Info: ', msg.status);
+                          $(msg.html).hide().insertBefore('#addCommentContainer').slideDown();
+                          $('#body').val('');
+                      }
+                      else {
+                          console.log('Info: ', msg.status);
+                          $.each(msg.errors,function(k,v){
+                              $('label[for='+k+']').append('<span class="error">'+v+'</span>');
+                          });
+                      }       
+
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                   console.log(textStatus, errorThrown);
+                }
+
+            });
+      
+        });
 
 
 });

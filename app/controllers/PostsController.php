@@ -27,6 +27,18 @@ class PostsController extends Controller
 		$data['post'] = $post;
         $data['title'] = 'Post Page ';
 
+        $res = Comment::getCommentById($post['id']);
+
+        $comments = array();
+
+        foreach ($res as $row) {
+            $comments[] = new Comment($row);
+        }
+
+        
+        $data['comments'] = $comments;
+
+
         $breadcrumb = new Breadcrumb();
 
         $data['breadcrumb'] = $breadcrumb->build(array(
